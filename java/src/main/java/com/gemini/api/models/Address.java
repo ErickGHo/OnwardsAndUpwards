@@ -1,18 +1,20 @@
 package com.gemini.api.models;
 
+import java.math.BigDecimal;
+
 public class Address {
 
     private Transaction[] transactions;
 
     private String name;
 
-    private double balance;
+    private BigDecimal balance;
 
     public String getName() {
         return name;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
