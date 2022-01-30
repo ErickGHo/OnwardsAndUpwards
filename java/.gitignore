@@ -1,0 +1,4 @@
+untitled1.iml
+target/*
+!/target/mixer-1.0-SNAPSHOT.jar
+

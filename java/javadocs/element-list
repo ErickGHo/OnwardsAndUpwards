@@ -1,0 +1,8 @@
+com.gemini.api.clients
+com.gemini.api.clients.exceptions
+com.gemini.api.clients.http
+com.gemini.api.models
+com.gemini.api.models.dto
+com.gemini.general
+com.gemini.mixer
+com.gemini.mixer.strategy
