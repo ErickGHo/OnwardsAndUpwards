@@ -1,5 +1,6 @@
 package com.gemini.api.clients;
 
+import com.gemini.api.clients.exceptions.InsufficientFundsException;
 import com.gemini.api.clients.http.GeminiHttpClient;
 import com.gemini.general.JsonUtil;
 import com.gemini.api.models.Transaction;
@@ -44,12 +45,15 @@ public class GeminiApiClient extends ApiClient {
     }
 
     @Override
-    public boolean sendJobCoins(String fromAddress, String toAddress, BigDecimal amount) {
+    public boolean sendJobCoins(String fromAddress, String toAddress, BigDecimal amount) throws InsufficientFundsException {
         logger.log(Level.INFO, String.format("Attempting to send %s from %s to %s", amount.toPlainString(), fromAddress, toAddress));
         HttpResponse<String> response = httpClient.sendSimplePost(TRANSACTIONS_API_URL, new TransferBody(fromAddress, toAddress, amount));
         if (response == null)
             return false;
-        return response.statusCode() == 200;
+        int responseCode = response.statusCode();
+        if (responseCode == 422)
+            throw new InsufficientFundsException(String.format("Transfer from %s to %s for %s resulted in insufficient funds", fromAddress, toAddress, amount));
+        return responseCode == 200;
     }
 
     @Override

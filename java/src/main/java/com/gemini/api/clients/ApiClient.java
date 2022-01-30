@@ -1,5 +1,6 @@
 package com.gemini.api.clients;
 
+import com.gemini.api.clients.exceptions.InsufficientFundsException;
 import com.gemini.api.models.Address;
 import com.gemini.api.models.Transaction;
 
@@ -19,8 +20,9 @@ public abstract class ApiClient {
      * @param toAddress   the receiver's address
      * @param amount      the amount to send in XX.XX format
      * @return true if successfuly sent, else false.
+     * @throws InsufficientFundsException if the fromAddress does not have sufficient funds
      */
-    public abstract boolean sendJobCoins(String fromAddress, String toAddress, BigDecimal amount);
+    public abstract boolean sendJobCoins(String fromAddress, String toAddress, BigDecimal amount) throws InsufficientFundsException;
 
     /**
      * Looks up a specific address in JobCoin's offchain network

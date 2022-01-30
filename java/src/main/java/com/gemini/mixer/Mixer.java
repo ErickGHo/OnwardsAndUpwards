@@ -2,6 +2,7 @@ package com.gemini.mixer;
 
 import com.gemini.api.clients.ApiClient;
 
+import com.gemini.api.clients.exceptions.InsufficientFundsException;
 import com.gemini.mixer.strategy.MixingStrategy;
 import com.gemini.general.RandomUtil;
 
@@ -48,7 +49,7 @@ public class Mixer {
      * @param withdrawAddresses the addresses to send the mixed coins to
      * @return true if coins was successfully mixed and sent, else early terminated and returns false
      */
-    public boolean mixUserCoins(String depositorAddress, String depositAddress, BigDecimal amount, MixingStrategy mixingStrategy, String... withdrawAddresses) {
+    public boolean mixUserCoins(String depositorAddress, String depositAddress, BigDecimal amount, MixingStrategy mixingStrategy, String... withdrawAddresses) throws InsufficientFundsException {
 
         HashMap<String, BigDecimal> addressesDistribution = mixingStrategy.generateDistribution(amount, withdrawAddresses);
 
@@ -74,7 +75,7 @@ public class Mixer {
      * This method automatically generates the deposit address for the depositor to deposit in
      * {@see #mixUserCoins}
      */
-    public boolean mixUserCoins(String depositorAddress, BigDecimal amount, MixingStrategy mixingStrategy, String... withdrawAddresses) {
+    public boolean mixUserCoins(String depositorAddress, BigDecimal amount, MixingStrategy mixingStrategy, String... withdrawAddresses) throws InsufficientFundsException {
         return mixUserCoins(depositorAddress, getRandomDepositAddress(), amount, mixingStrategy, withdrawAddresses);
     }
 

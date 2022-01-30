@@ -1,6 +1,7 @@
 package com.gemini.mixer;
 
 import com.gemini.api.clients.GeminiApiClient;
+import com.gemini.api.clients.exceptions.InsufficientFundsException;
 import com.gemini.mixer.strategy.EvenDistributionStrategy;
 
 import java.math.BigDecimal;
@@ -18,7 +19,7 @@ import java.util.Scanner;
 public class Application {
 
 
-    public static void main(String... args) {
+    public static void main(String... args) throws InsufficientFundsException {
         Scanner scanner = new Scanner(System.in);
 
         GeminiApiClient apiClient = new GeminiApiClient();

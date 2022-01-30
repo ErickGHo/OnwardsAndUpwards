@@ -23,7 +23,8 @@ This was an interesting take on the definition of a coin mixer. I've used mixers
 * Every user input is valid (no validation needed) e.g. addresses
 * All methods involving requests are transactional and atomic. All requests are expected to work
 * Long polling the transaction endpoint to verify deposits is not needed.
-* In order to simplify business logic, I hid as many exceptions as possible by returning null. Depending on my stakeholders, this could be changed to make the exceptions visible.
+* In order to simplify business logic, I hid many network exceptions. Depending on my stakeholders, this could be changed to make the exceptions visible.
+  * InsufficentFundsException was implemented according to api specs.
 * Tests were not created
 
 ### Project was not forked, used the template instead.
