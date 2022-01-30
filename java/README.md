@@ -25,3 +25,5 @@ This was an interesting take on the definition of a coin mixer. I've used mixers
 * Long polling the transaction endpoint to verify deposits is not needed.
 * In order to simplify business logic, I hid as many exceptions as possible by returning null. Depending on my stakeholders, this could be changed to make the exceptions visible.
 * Tests were not created
+
+### Project was not forked, used the template instead.
