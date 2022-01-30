@@ -35,8 +35,10 @@ public class Application {
             System.out.print("Enter your address e.g., Bob: ");
             depositorAddress = scanner.next();
 
-            System.out.print("How much coins would you like to mix? (up to second decimal) e.g., 10.00: ");
-            amountToMix = scanner.nextBigDecimal();
+            do {
+                System.out.print("How much coins would you like to mix? (provide to the hundredths) e.g., 10.00: ");
+                amountToMix = scanner.nextBigDecimal();
+            } while(amountToMix == null || amountToMix.stripTrailingZeros().scale() > 2);
 
             System.out.print("Enter your withdraw addresses delimiter by comma e.g., BobWithdraw1,BobWithdraw2 ");
             withdrawAddresses = scanner.next().split(",");
@@ -57,7 +59,10 @@ public class Application {
         } while (!confirmedDetails);
 
 
-        mixer.mixUserCoins(depositorAddress, randomDepositAddress, amountToMix, EvenDistributionStrategy.getInstance(), withdrawAddresses);
+        if(mixer.mixUserCoins(depositorAddress, randomDepositAddress, amountToMix, EvenDistributionStrategy.getInstance(), withdrawAddresses))
+            System.out.println("Successfully mixed coins");
+        else
+            System.out.println("Something went wrong");
 
     }
 }
