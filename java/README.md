@@ -1,6 +1,6 @@
 # Erick's thoughts
 
-This was an interesting take on the definition of a coin mixer. I've used mixers in the past, and generally, the input to output is generally 1:1, where the house contains multiple addresses to send from instead.
+This was an interesting take on the definition of a coin mixer. I've used mixers in the past, and generally, the input to output is when I used it was 1:1, and the house contained multiple addresses to send from instead.
 
 ### Get started
 * Requires Java 11 +
