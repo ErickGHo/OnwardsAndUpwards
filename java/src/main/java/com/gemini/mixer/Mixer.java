@@ -1,13 +1,13 @@
 package com.gemini.mixer;
 
 import com.gemini.api.clients.ApiClient;
+
 import com.gemini.mixer.strategy.MixingStrategy;
 import com.gemini.general.RandomUtil;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 /**
  * Encapsulate the main business logic of mixing coins and provide an easy to use API for developers to leverage to mix coins
@@ -19,8 +19,6 @@ import java.util.logging.Logger;
 public class Mixer {
 
     private ApiClient client;
-
-    private Logger logger = Logger.getLogger(getClass().getName());
 
     private static final String[] DEPOSIT_ADDRESSES = {"JobDeposit1", "JobDeposit2", "JobDeposit3", "JobDeposit4", "JobDeposit5"};
 
@@ -45,7 +43,7 @@ public class Mixer {
      *
      * @param depositorAddress  the sender's address
      * @param depositAddress    the house's random deposit address to verify the user's transaction
-     * @param amount            the amount in XX.XX format
+     * @param amount            the amount to mix
      * @param mixingStrategy    the mixing strategy to distribute the coins
      * @param withdrawAddresses the addresses to send the mixed coins to
      * @return true if coins was successfully mixed and sent, else early terminated and returns false
@@ -54,7 +52,8 @@ public class Mixer {
 
         HashMap<String, BigDecimal> addressesDistribution = mixingStrategy.generateDistribution(amount, withdrawAddresses);
 
-        if (addressesDistribution == null)
+
+        if (addressesDistribution == null) // distribution failed
             return false;
 
         if (!client.sendJobCoins(depositorAddress, depositAddress, amount))
