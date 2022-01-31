@@ -1,7 +1,6 @@
 package com.gemini.tests;
 
 
-import com.gemini.mixer.Mixer;
 import com.gemini.mixer.strategy.EvenDistributionStrategy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
