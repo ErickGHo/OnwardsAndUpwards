@@ -38,7 +38,6 @@ public class EvenDistributionTest {
             totalSplit = totalSplit.add(split);
             Assertions.assertTrue(expectedSplitValues.contains(split));
         }
-        ;
 
         Assertions.assertEquals(totalSplit, amountToSplit);
     }
