@@ -6,6 +6,7 @@ This was an interesting take on the definition of a coin mixer. In my experience
 * Requires Java 11 +
 * The project includes a prebuilt jar with dependencies built with maven called `target/mixer-1.0-SNAPSHOT.jar`, it can be ran via `java -jar target/mixer-1.0-SNAPSHOT.jar`
 * `mvn package` to build the jar.
+* `mvn test` to run tests, reports are sent to `target/surefire-reports`
 
 ### Javadocs
 * Can be found in `javadocs/index.html`
@@ -16,6 +17,7 @@ This was an interesting take on the definition of a coin mixer. In my experience
 
 ### Libraries used:
 * Jackson - to parse JSON
+* JUnit 5 & surefire for testing
 
 ### Some assumptions are made due to time constraints:
 * API url is hardcoded and doesn't read from env variables/env file.
@@ -25,6 +27,6 @@ This was an interesting take on the definition of a coin mixer. In my experience
 * Long polling the transaction endpoint to verify deposits is not needed.
 * In order to simplify business logic, I hid many network exceptions. Depending on my stakeholders, this could be changed to make the exceptions visible.
   * InsufficentFundsException was implemented according to api specs.
-* Tests were not created
+* Unit tests are bare minimum
 
 ### Project was not forked, used the template instead.
