@@ -22,7 +22,6 @@ This was an interesting take on the definition of a coin mixer. In my experience
 ### Some assumptions are made due to time constraints:
 * API url is hardcoded and doesn't read from env variables/env file.
 * Synchronous requests are OK.
-* Every user input is valid (no validation needed) e.g. addresses
 * All methods involving requests are transactional and atomic. All requests are expected to work
 * Long polling the transaction endpoint to verify deposits is not needed.
 * In order to simplify business logic, I hid many network exceptions. Depending on my stakeholders, this could be changed to make the exceptions visible.
